@@ -58,7 +58,7 @@
 				</div>
 				<!--下部分右边-->
 				<div id="bright">
-					<iframe frameborder="0" scrolling="no" name="myright" width="1235px" height="700px" ></iframe>
+					<iframe frameborder="0" scrolling="yes" name="myright" width="1235px" height="700px" ></iframe>
 				</div>
 			</div>
 		</div>

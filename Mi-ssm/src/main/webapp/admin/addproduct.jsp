@@ -14,27 +14,27 @@
         <script type="text/javascript" src="${pageContext.request.contextPath }/js/ajaxfileupload.js"></script>
 	</head>
     <script type="text/javascript">
-        function fileChange(){//注意：此处不能使用jQuery中的change事件，因此仅触发一次，因此使用标签的：onchange属性
-           alert("change");
+        function fileChange(){
+        	//注意：此处不能使用jQuery中的change事件，因此仅触发一次，因此使用标签的：onchange属性
             $.ajaxFileUpload({
-                url: '/prod/ajaxImg.action',//用于文件上传的服务器端请求地址
+                url: '${pageContext.request.contextPath}/prod/ajaxImg.action',//用于文件上传的服务器端请求地址
                 secureuri: false,//一般设置为false
-                fileElementId: 'pimage',//文件上传控件的id属性  <input type="file" id="pimage" name="pimage" />
+				//文件上传控件的id属性  <input type="file" id="pimage" name="pimage" />
+				fileElementId: 'pimage',
                 dataType: 'json',//返回值类型 一般设置为json
                 success: function(obj) //服务器成功响应处理函数
                 {
-                	alert(obj);
                     $("#imgDiv").empty();  //清空原有数据
                     //创建img 标签对象
                     var imgObj = $("<img>");
                     //给img标签对象追加属性
-                    imgObj.attr("src","/image_big/"+obj.imgurl);
-                    imgObj.attr("width","100px");
-                    imgObj.attr("height","100px");
+                    imgObj.attr("src","/image_big/"+obj.imgurl);//设置图片路径
+                    imgObj.attr("width","100px");//设置宽
+                    imgObj.attr("height","100px");//设置高
                     //将图片img标签追加到imgDiv末尾
                     $("#imgDiv").append(imgObj);
                     //将图片的名称（从服务端返回的JSON中取得）赋值给文件本框
-                    //$("#imgName").html(data.imgName);
+                     $("#imgName").html(data.imgName);
                 },
                 error: function (e)//服务器响应失败处理函数
                 {
@@ -86,10 +86,8 @@
 						<tr>
 							<td class="three">图片介绍</td>
                             <td> <br><div id="imgDiv" style="display:block; width: 40px; height: 50px;"></div><br><br><br><br>
-								<%--<input type="file" id="pimage" name="pimage" onchange="fileChange()">--%>
                             <input type="file" id="pimage" name="pimage" onchange="fileChange()" >
                                 <span id="imgName" ></span><br>
-
                             </td>
 						</tr>
 						<tr class="three">
@@ -112,7 +110,7 @@
 							<td class="one">类别</td>
 							<td>
 								<select name="typeId">
-									<c:forEach items="${ptlist}" var="type">
+									<c:forEach items="${typeList}" var="type">
 										<option value="${type.typeId}">${type.typeName}</option>
 									</c:forEach>
 								</select>

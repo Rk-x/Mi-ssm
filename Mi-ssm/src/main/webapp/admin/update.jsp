@@ -116,7 +116,7 @@
 							<td class="one">类别</td>
 							<td>
 								<select name="typeId">
-									<c:forEach items="${ptlist}" var="type">
+									<c:forEach items="${typeList}" var="type">
 										<option value="${type.typeId}"
 												<c:if test="${type.typeId==prod.typeId}">
 													selected="selected"

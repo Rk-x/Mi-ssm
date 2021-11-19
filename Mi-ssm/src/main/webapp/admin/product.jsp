@@ -121,7 +121,7 @@
                             <nav aria-label="..." style="text-align:center;">
                                 <ul class="pagination">
                                     <li>
-                                            <%--                                        <a href="${pageContext.request.contextPath}/prod/split.action?page=${info.prePage}" aria-label="Previous">--%>
+                                        <%--<a href="${pageContext.request.contextPath}/prod/split.action?page=${info.prePage}" aria-label="Previous">--%>
                                         <a href="javascript:ajaxsplit(${info.prePage})" aria-label="Previous">
 
                                             <span aria-hidden="true">«</span></a>
@@ -146,7 +146,7 @@
                                         <a href="javascript:ajaxsplit(${info.nextPage})" aria-label="Next">
                                             <span aria-hidden="true">»</span></a>
                                     </li>
-                                    <li style=" margin-left:150px;color: #0e90d2;height: 35px; line-height: 35px;">总共&nbsp;&nbsp;&nbsp;<font
+                                    <li style=" margin-left:150px;color: #0e90d2;height: 35px; line-height: 35px;">总共<font
                                             style="color:orange;">${info.pages}</font>&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <c:if test="${info.pageNum!=0}">
                                             当前&nbsp;&nbsp;&nbsp;<font
@@ -198,7 +198,7 @@
                         if(id!=null)
                             str += id+",";  //22,33,44
                     });
-alert(str+"11111111");
+                    alert(str+"11111111");
                     //发送请求到服务器端
                    // window.location="${pageContext.request.contextPath}/prod/deletebatch.action?str="+str;
 
@@ -228,7 +228,7 @@ alert(str+"11111111");
             success:function () {
                 //重新加载分页显示的组件table
                 //location.href---->http://localhost:8080/admin/login.action
-                $("#table").load("http://localhost:8080/admin/product.jsp #table");
+                $("#table").load("http://localhost:8099/admin/product.jsp #table");
             }
         })
     };
