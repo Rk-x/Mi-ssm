@@ -59,6 +59,7 @@
 					<input type="hidden" value="${prod.pId}" name="pId">
 					<input type="hidden" value="${prod.pImage}" name="pImage">
 					<input type="hidden" value="${page}" name="page">
+					<input type="hidden" value="${prod.pDate}" name="pDate">
 					<table>
 						<tr>
 							<td class="one">商品名称</td>
@@ -93,7 +94,6 @@
 							<td> <br><div id="imgDiv" style="display:block; width: 40px; height: 50px;"><img src="/image_big/${prod.pImage}" width="100px" height="100px" ></div><br><br><br><br>
 								<input type="file" id="pimage" name="pimage" onchange="fileChange()">
 								<span id="imgName"></span><br>
-
 							</td>
 						</tr>
 						<tr class="three">

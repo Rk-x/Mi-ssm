@@ -34,7 +34,7 @@
                     //将图片img标签追加到imgDiv末尾
                     $("#imgDiv").append(imgObj);
                     //将图片的名称（从服务端返回的JSON中取得）赋值给文件本框
-                     $("#imgName").html(data.imgName);
+                     $("#imgName").html(obj.imgName);
                 },
                 error: function (e)//服务器响应失败处理函数
                 {
@@ -82,7 +82,7 @@
 							<td class="four"></td>
 							<td><span id="priceerr"></span></td>
 						</tr>
-						
+
 						<tr>
 							<td class="three">图片介绍</td>
                             <td> <br><div id="imgDiv" style="display:block; width: 40px; height: 50px;"></div><br><br><br><br>

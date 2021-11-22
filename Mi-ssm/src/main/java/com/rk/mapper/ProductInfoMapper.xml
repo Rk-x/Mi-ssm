@@ -255,4 +255,12 @@
       p_date = #{pDate,jdbcType=DATE}
     where p_id = #{pId,jdbcType=INTEGER}
   </update>
+
+<!--  批量删除-->
+  <delete id="deleteBatch">
+    delete from product_info where p_id in
+    <foreach collection="array" item="pid" separator="," open="(" close=")">
+      #{pid}
+    </foreach>
+  </delete>
 </mapper>
