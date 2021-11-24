@@ -58,7 +58,7 @@
 				<form action="${pageContext.request.contextPath}/prod/update.action" enctype="multipart/form-data" method="post" id="myform">
 					<input type="hidden" value="${prod.pId}" name="pId">
 					<input type="hidden" value="${prod.pImage}" name="pImage">
-					<input type="hidden" value="${page}" name="page">
+
 					<input type="hidden" value="${prod.pDate}" name="pDate">
 					<table>
 						<tr>

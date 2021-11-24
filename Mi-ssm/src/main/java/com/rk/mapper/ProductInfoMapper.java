@@ -1,7 +1,9 @@
 package com.rk.mapper;
 
+import com.github.pagehelper.PageInfo;
 import com.rk.pojo.ProductInfo;
 import com.rk.pojo.ProductInfoExample;
+import com.rk.pojo.vo.ProductInfoVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -31,4 +33,9 @@ public interface ProductInfoMapper {
 
     //批量删除商品的功能
     int deleteBatch(String[] ids);
+
+    //多条件查询商品
+    List<ProductInfo> selectCondition(ProductInfoVo vo);
+
+
 }

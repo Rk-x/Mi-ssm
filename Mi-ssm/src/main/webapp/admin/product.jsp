@@ -57,15 +57,15 @@
     </div>
     <div id="condition" style="text-align: center">
         <form id="myform">
-            商品名称：<input name="pname" id="pname">&nbsp;&nbsp;&nbsp;
-            商品类型：<select name="typeid" id="typeid">
-            <option value="-1">请选择</option>
-            <c:forEach items="${ptlist}" var="pt">
+            商品名称：<input name="pname" value="${vo.pname}" id="pname">&nbsp;&nbsp;&nbsp;
+            商品类型：<select name="typeid"  id="typeid">
+            <option value="-1" >请选择</option>
+            <c:forEach items="${typeList}" var="pt">
                 <option value="${pt.typeId}">${pt.typeName}</option>
             </c:forEach>
         </select>&nbsp;&nbsp;&nbsp;
-            价格：<input name="lprice" id="lprice">-<input name="hprice" id="hprice">
-            <input type="button" value="查询" onclick="ajaxsplit(${info.pageNum})">
+            价格：<input name="lprice" value="${vo.lprice}" id="lprice">-<input value="${vo.hprice}" name="hprice" id="hprice">
+            <input type="button" value="查询" onclick="condition()">
         </form>
     </div>
     <br>
@@ -83,7 +83,7 @@
                     </a>
                     <input type="button" class="btn btn-warning" id="btn1"
                            value="批量删除" onclick="deleteBatch()">
-                </div>
+                     </div>
                 <!--显示分页后的商品-->
                 <div id="middle">
                     <table class="table table-bordered table-striped">
@@ -112,7 +112,7 @@
                                             onclick="one(${p.pId},${info.pageNum})">编辑
                                     </button>
                                     <button type="button" class="btn btn-warning" id="mydel"
-                                            onclick="del(${p.pId},${info.pageNum},${info.pages},${info.total})">删除
+                                            onclick="del(${p.pId},${info.pageNum})">删除
                                     </button>
                                 </td>
                             </tr>
@@ -180,7 +180,13 @@
     }
 
     function one(pid, ispage) {
-        location.href = "${pageContext.request.contextPath}/prod/one.action?pid=" + pid + "&page=" + ispage;
+        //取出查询条件
+        var pname=$("#pname").val();
+        var typeid=$("#typeid").val();
+        var lprice=$("#lprice").val();
+        var hprice=$("#hprice").val();
+        var str="?pid="+pid+"&page="+ispage+"&pname="+pname+"&typeid="+typeid+"&lprice="+lprice+"&hprice="+hprice;
+        location.href = "${pageContext.request.contextPath}/prod/one.action"+str;
     }
 
     //批量删除
@@ -218,9 +224,15 @@
         }
     }
     //单个删除
-    function del(pid,ispage,pages,total) {
+    function del(pid,ispage) {
         if (confirm("确定删除吗")) {
-              location.href = "${pageContext.request.contextPath}/prod/delete.action?pid="+pid+"&page=" + ispage+"&pages=" + pages+"&total=" + total;
+            //取出查询条件
+            var pname=$("#pname").val();
+            var typeid=$("#typeid").val();
+            var lprice=$("#lprice").val();
+            var hprice=$("#hprice").val();
+            var str="?pid="+pid+"&page="+ispage+"&pname="+pname+"&typeid="+typeid+"&lprice="+lprice+"&hprice="+hprice;
+            location.href = "${pageContext.request.contextPath}/prod/delete.action"+str;
             //向服务器提交请求完成删除
             <%--$.ajax({--%>
             <%--    url:"${pageContext.request.contextPath}/prod/delete.action",--%>
@@ -235,14 +247,41 @@
         }
     }
 
+    //条件查询
+    function condition(){
+        //取出查询条件
+        var pname=$("#pname").val();
+        var typeid=$("#typeid").val();
+        var lprice=$("#lprice").val();
+        var hprice=$("#hprice").val();
+        $.ajax({
+            type:"post",
+            url:"${pageContext.request.contextPath}/prod/ajaxsplit.action",
+            data:{"pname":pname,"typeid":typeid,
+                "lprice":lprice,"hprice":hprice},
+            success:function () {
+                //刷新表格  后台将查询到的结果存储到seession
+                $("#table").load("http://localhost:8099/admin/product.jsp #table");
+            }
+            }
+        )
+    }
 </script>
 <!--分页的AJAX实现-->
 <script type="text/javascript">
+
     function ajaxsplit(page) {
+        //取出查询条件
+        var pname=$("#pname").val();
+        var typeid=$("#typeid").val();
+        var lprice=$("#lprice").val();
+        var hprice=$("#hprice").val();
+
         //异步ajax分页请求
         $.ajax({
             url:"${pageContext.request.contextPath}/prod/ajaxsplit.action",
-            data:{"page":page},
+            data:{"page":page,"pname":pname,"typeid":typeid,
+                "lprice":lprice,"hprice":hprice },
             type:"post",
             success:function () {
                 //重新加载分页显示的组件table
@@ -250,7 +289,7 @@
                 $("#table").load("http://localhost:8099/admin/product.jsp #table");
             }
         })
-    };
+    }
 
 </script>
 </body>

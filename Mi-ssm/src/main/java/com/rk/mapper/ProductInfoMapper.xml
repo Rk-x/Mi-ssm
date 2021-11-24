@@ -263,4 +263,31 @@
       #{pid}
     </foreach>
   </delete>
+
+
+  <!--多条件查询-->
+  <select id="selectCondition" parameterType="com.rk.pojo.vo.ProductInfoVo" resultMap="BaseResultMap">
+    select *
+    from product_info
+    <!--拼条件-->
+    <where>
+      <if test="pname!=null and pname!=''">
+        and p_name like '%${pname}%'
+      </if>
+      <if test="typeid!=null and typeid!=-1">
+        and type_id =#{typeid}
+      </if>
+      <if test="(lprice!=null and lprice!='') and  (hprice==null or hprice=='')">
+        and p_price &gt;= #{lprice}
+      </if>
+      <if test="(lprice==null or lprice=='') and  (hprice!=null and hprice!='')">
+        and p_price &lt;= #{hprice}
+      </if>
+      <if test="(lprice!=null and lprice!='') and  (hprice!=null and hprice!='')">
+        and p_price between #{lprice} and #{hprice}
+      </if>
+    </where>
+    order by p_id desc
+  </select>
+
 </mapper>

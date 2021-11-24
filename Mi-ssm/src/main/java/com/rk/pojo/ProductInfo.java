@@ -82,4 +82,18 @@ public class ProductInfo {
     public void setpDate(Date pDate) {
         this.pDate = pDate;
     }
+
+    @Override
+    public String toString() {
+        return "ProductInfo{" +
+                "pId=" + pId +
+                ", pName='" + pName + '\'' +
+                ", pContent='" + pContent + '\'' +
+                ", pPrice=" + pPrice +
+                ", pImage='" + pImage + '\'' +
+                ", pNumber=" + pNumber +
+                ", typeId=" + typeId +
+                ", pDate=" + pDate +
+                '}';
+    }
 }
