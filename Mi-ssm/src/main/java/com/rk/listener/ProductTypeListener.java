@@ -1,10 +1,8 @@
 package com.rk.listener;
-
 import com.rk.pojo.ProductType;
 import com.rk.service.ProductTypeService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -23,6 +21,7 @@ public class ProductTypeListener implements ServletContextListener {
         servletContextEvent.getServletContext().setAttribute("typeList",typelist);
     }
 
+    
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
 

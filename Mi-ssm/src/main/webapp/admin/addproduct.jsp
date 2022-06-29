@@ -32,7 +32,7 @@
                     imgObj.attr("width","100px");//设置宽
                     imgObj.attr("height","100px");//设置高
                     //将图片img标签追加到imgDiv末尾
-                    $("#imgDiv").append(imgObj);
+                     $("#imgDiv").append(imgObj);
                     //将图片的名称（从服务端返回的JSON中取得）赋值给文件本框
                      $("#imgName").html(obj.imgName);
                 },
@@ -86,8 +86,8 @@
 						<tr>
 							<td class="three">图片介绍</td>
                             <td> <br><div id="imgDiv" style="display:block; width: 40px; height: 50px;"></div><br><br><br><br>
-                            <input type="file" id="pimage" name="pimage" onchange="fileChange()" >
-                                <span id="imgName" ></span><br>
+                            <input type="file" id="pimage" name="pimage" onchange="fileChange()"/>
+							<span id="imgName" ></span><br>
                             </td>
 						</tr>
 						<tr class="three">

@@ -1,5 +1,4 @@
 package com.rk.service.impl;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.rk.mapper.ProductInfoMapper;
@@ -9,9 +8,8 @@ import com.rk.pojo.vo.ProductInfoVo;
 import com.rk.service.ProductInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.sql.ParameterMetaData;
 import java.util.List;
+
 @Service
 public class ProductInfoServiceImpl implements ProductInfoService {
     @Autowired
@@ -22,6 +20,12 @@ public class ProductInfoServiceImpl implements ProductInfoService {
         return productInfos;
     }
 
+    /**
+     * 当前页码和每页的条数
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @Override
     public PageInfo splitPage(int pageNum, int pageSize) {
         if(pageNum==0)
@@ -29,7 +33,7 @@ public class ProductInfoServiceImpl implements ProductInfoService {
 
         //使用分页插件的pageHelper工具类完成分页设置
         PageHelper.startPage(pageNum,pageSize);
-
+ 
         //进行PageInfo的数据封装
         //进行有条件的查询操作，进行条件添加
         ProductInfoExample example=new ProductInfoExample();

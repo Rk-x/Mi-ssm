@@ -34,9 +34,8 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:springmvc.xml</param-value>
         </init-param>
-
     </servlet>
-    <servlet-mapping>
+     <servlet-mapping>
         <servlet-name>springMVC</servlet-name>
         <!--只有是请求是 .action 为后缀的交给 DispatcherServlet-->
         <url-pattern>*.action</url-pattern>

@@ -1,6 +1,6 @@
 package com.rk.pojo;
-
 import java.util.Date;
+
 
 public class ProductInfo {
     private Integer pId;

@@ -44,6 +44,7 @@
 			<tx:method name="*" propagation="SUPPORTS"/>
 		</tx:attributes>
 	</tx:advice>
+
 	<!--    完成切面和切入点的织入-->
 	<aop:config>
 		<aop:pointcut id="interceptor" expression="execution(* com.rk..service.*.*(..))"/>

@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bright.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/addBook.css"/>
-    <script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 
     <title></title>
 </head>
@@ -217,7 +217,7 @@
                     success:function (msg)
                     {
                         alert(msg);
-                        $("#table").load("http://localhost:8099/admin/product.jsp #table");
+                        $("#table").load("http://localhost/admin/product.jsp #table");
                     }
                 });
             }
@@ -261,7 +261,7 @@
                 "lprice":lprice,"hprice":hprice},
             success:function () {
                 //刷新表格  后台将查询到的结果存储到seession
-                $("#table").load("http://localhost:8099/admin/product.jsp #table");
+                $("#table").load("http://local/admin/product.jsp #table");
             }
             }
         )
@@ -286,7 +286,7 @@
             success:function () {
                 //重新加载分页显示的组件table
                 //location.href---->http://localhost:8080/admin/login.action
-                $("#table").load("http://localhost:8099/admin/product.jsp #table");
+                $("#table").load("http://local/admin/product.jsp #table");
             }
         })
     }

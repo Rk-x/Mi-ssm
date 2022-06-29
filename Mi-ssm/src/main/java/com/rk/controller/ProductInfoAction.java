@@ -99,9 +99,8 @@ public class ProductInfoAction {
     @ResponseBody
     @RequestMapping("/ajaxImg")
     public Object ajaxImg(MultipartFile pimage,HttpServletRequest request){
-
+        
         //上传图片  存储图片
-
         //提取生成文件名UUID+上传图片的后缀.jpg   .png   getFileType()传入图片的名称，自动截取后缀
         saveFilename=FileNameUtil.getUUIDFileName()+ FileNameUtil.getFileType(pimage.getOriginalFilename());
         //获取图片要存储的路径
@@ -114,7 +113,6 @@ public class ProductInfoAction {
         }
         System.out.println(path);
         System.out.println(saveFilename);
-
 
         //回显图片  返回客户端JSON对象，封装图片的路径，为了在页面实现立即回显
         JSONObject object=new JSONObject();
@@ -134,7 +132,6 @@ public class ProductInfoAction {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         if(num>0)
         {
             request.setAttribute("msg","添加成功");
